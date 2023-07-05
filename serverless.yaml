@@ -1,0 +1,14 @@
+service: spring-boot-serverless
+provider:
+  name: aws
+  runtime: java11
+package:
+  artifact: build/distributions/AWSTest-0.0.1-SNAPSHOT.zip
+functions:
+  springBootServerless:
+    handler: com.example.awstest.handler.AWSLambdaHandler::handleRequest
+    events:
+      - http:
+          path: /searchAll
+          method: get
+    timeout: 30
